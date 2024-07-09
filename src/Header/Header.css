@@ -1,3 +1,50 @@
 .Header {
-  background-color: beige;
+  background-color: #FFFFFF;
+}
+
+.Header-logo img{
+  height: 35px;
+  max-width: 100%;
+}
+
+.Header nav{
+  color: #000000;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  font-size: 16px;
+}
+
+.Header ul{
+  display: flex;
+  flex-direction: row;
+  margin: 0px 0px 48px;
+  padding: 16px;
+  align-items: center;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.Header-logo span{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 20px;
+  margin: 0px 16px 0px 0px;
+  padding: 5px 0px;
+}
+
+.Header-logo p{
+  padding-right: 5px;
+  font-weight: 500;
+}
+
+.Header a{
+  text-decoration: none;
+}
+
+.Collapsable{
+  display: flex;
+}
+
+.Collapsable li{
+  padding: 8px;
 }
