@@ -48,7 +48,7 @@ function Main() {
                                     <p>PRICE : {sizes[i].price * quantities[i]} Rs/-</p>
                                 </div>
                                 <div>
-                                    <button>ADD TO CART</button>
+                                    <button type='submit'>ADD TO CART</button>
                                 </div>
                             </div>
                         </div>
