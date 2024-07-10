@@ -1,3 +1,59 @@
 .Main{
-    background-color: rgb(148, 148, 177);
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0px -15px;
+}
+
+.Pizza-Card{
+    margin: 16px;
+    padding: 0px 15px;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+}
+
+.Pizza-Card-Inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 3rem;
+    border-radius: 0.25rem;
+}
+
+.Pizza-Card h1{
+    margin: 0px 0px 8px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.Pizza-Card img{
+    height: 200px;
+    width: 200px;
+}
+
+.Options, .Carting{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.Options div, .Carting div{
+    margin: 4px;
+}
+
+.Carting p{
+    font-size: 20px;
+    margin: 4px 0px 8px;
+}
+
+.Carting button{
+    font-size: 16px;
+    color: white;
+    background-color: #FF0000;
+    padding: 6px 12px;
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
 }
