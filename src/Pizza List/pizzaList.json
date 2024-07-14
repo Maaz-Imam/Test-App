@@ -2,7 +2,7 @@
     {
         "title": "Non Veg Supreme",
         "img": "https://www.dominos.co.in/files/items/Non-Veg_Supreme.jpg",
-        "sizes": {
+        "prices": {
             "small": 100,
             "medium": 150,
             "large": 200
@@ -12,7 +12,7 @@
     {
         "title": "Golden Corn Pizza",
         "img": "https://www.dominos.co.in//files/items/golden_corn_veg.jpg",
-        "sizes": {
+        "prices": {
             "small": 120,
             "medium": 4350,
             "large": "NaN"
@@ -22,17 +22,17 @@
     {
         "title": "Jalapeno & Red Paprika Pizza",
         "img": "https://www.dominos.co.in/files/items/5_Pepper.jpg",
-        "sizes": {
+        "prices": {
             "small": 200,
             "medium": 250,
-            "large": 200
+            "large": 2000
           },
         "description": "Bite into supreme delight of Black Olives, Onions, Grilled Mushrooms, Pepper BBQ Chicken, Peri-Peri Chicken, Grilled Chicken Rashers"
     },
     {
         "title": "Pepper Barbeque Chicken",
         "img": "https://www.dominos.co.in/files/items/Pepper_Barbeque.jpg",
-        "sizes": {
+        "prices": {
             "small": 400,
             "medium": 150,
             "large": 800
@@ -42,7 +42,7 @@
     {
         "title": "Mexican Green Wave",
         "img": "https://img2.exportersindia.com/product_images/bc-full/2018/10/2044906/mexican-green-wave-pizza-1540891420-4420335.jpeg",
-        "sizes": {
+        "prices": {
             "small": 210,
             "medium": 170,
             "large": 200
@@ -52,7 +52,7 @@
     {
         "title": "Double Cheese Margherita Pizza",
         "img": "https://www.dominos.co.in/files/items/Double_Cheese_Margherita.jpg",
-        "sizes": {
+        "prices": {
             "small": 100,
             "medium": 150,
             "large": 200
@@ -62,7 +62,7 @@
     {
         "title": "Pepper Barbeque Chicken",
         "img": "https://www.dominos.co.in/files/items/Pepper_Barbeque.jpg",
-        "sizes": {
+        "prices": {
             "small": 100,
             "medium": 150,
             "large": 200

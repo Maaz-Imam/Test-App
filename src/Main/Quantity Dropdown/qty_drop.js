@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 
-function Qty_Dropdown({ onQuantityChange, pizzaIndex }) {
-  const [selectedOption, setSelectedOption] = useState({ value: '1', label: '1' });
+function Qty_Dropdown({ handlePizzaQty }) {
 
   const options = [
     { value: '1', label: '1' },
@@ -17,22 +16,13 @@ function Qty_Dropdown({ onQuantityChange, pizzaIndex }) {
     { value: '10', label: '10' },
   ];
 
-  useEffect(() => {
-    onQuantityChange(pizzaIndex, selectedOption.value);
-  }, [selectedOption, pizzaIndex, onQuantityChange]);
-
-  const handleChange = (option) => {
-    setSelectedOption(option);
-  };
-
   return (
     <div>
       <label htmlFor="quantity-select">Quantity:</label>
       <Select
         id="quantity-select"
-        value={selectedOption}
-        onChange={handleChange}
         options={options}
+        onChange={handlePizzaQty}
         placeholder="1"
       />
     </div>

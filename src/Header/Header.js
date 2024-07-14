@@ -3,7 +3,7 @@ import './Header.css';
 import * as React from "react";
 import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({ count }) {
   return (
     <div className="Header">
       
@@ -14,10 +14,10 @@ function Header() {
             </li>
             <span className='Collapsable'>
               <li>
-              <Link to='/login'>Login</Link>
+                <Link to='/login'>Login</Link>
               </li>
               <li>
-              <Link to='/cart'>Cart</Link>
+                <Link to='/cart'>Cart {count}</Link>
               </li>
             </span>
           </ul>

@@ -1,5 +1,6 @@
 import './Signup.css';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function Signup() {
@@ -21,6 +22,10 @@ function Signup() {
       const handleSubmit = (e) => {
         e.preventDefault();
     
+        if (formData.password !== formData.confirmPass) {
+            alert("Passwords don't match");
+            return
+        }
         // Add your Signup logic here, such as sending a request to your server
     
         console.log('Form data submitted:', formData);
@@ -37,8 +42,8 @@ function Signup() {
                             <div>
                             <input
                                 type="text"
-                                name="text"
-                                id="text"
+                                name="name"
+                                id="name"
                                 placeholder='Enter Name'
                                 value={formData.name}
                                 onChange={handleInputChange}
@@ -70,8 +75,8 @@ function Signup() {
                             <div>
                             <input
                                 type="password"
-                                name="password"
-                                id="password"
+                                name="confirmPass"
+                                id="confirmPass"
                                 placeholder='Confirm Password'
                                 value={formData.confirmPass}
                                 onChange={handleInputChange}
@@ -82,7 +87,7 @@ function Signup() {
                                 <button type="submit">Register</button>
                             </div>
                         </form>
-                        <a href='/login'>Click Here To Login</a>
+                        <Link to='/login'>Click Here To Login</Link>
                     </div>
                 </div>
             </div>
