@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import CartContext from '../Context/CartContext';
 import './Main.css';
 import SizeDropdown from './Size Dropdown/size_drop';
 import QtyDropdown from './Quantity Dropdown/qty_drop';
@@ -6,7 +7,8 @@ import QtyDropdown from './Quantity Dropdown/qty_drop';
 import Modal from './Modal/Modal';
 import axios from 'axios';
 
-function Main({ addCart }) {
+function Main() {
+    const { addCart } = useContext(CartContext);
 
     const [pizzaList, setPizzaList] = useState([]);
 
@@ -54,7 +56,7 @@ function Main({ addCart }) {
                 <div className='Pizza-Card' key={pizza.id}>
                     <div className='Pizza-Card-Inner'>
                         <div className='Pizza-Card-Inner-Upper' onClick={() => handleOpenModal(pizza.id)}>
-                            <h1>{pizza.title} {pizza.id}</h1>
+                            <h1>{pizza.title}</h1>
                             <img src={pizza.img} alt={`${pizza.title}`} />
                         </div>
                         <div className='Options'>

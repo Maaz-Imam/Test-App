@@ -1,8 +1,22 @@
-import React, { useEffect } from 'react';
-import './Cart.css';
+import React, { useEffect, useContext } from 'react';
+// import axios from 'axios';
+import CartContext from '../Context/CartContext';
 import pizzaList from '../Pizza List/pizzaList.json';
+import './Cart.css';
 
-function Cart({ cart, bill, addCart, subCart }) {
+function Cart() {
+  const { cart, bill, addCart, subCart } = useContext(CartContext);
+
+  // const [pizzaList, setPizzaList] = useState([]);
+
+  // useEffect(() => {
+  //   axios.get(`http://localhost:3000/pizzas`)
+  //   .then(response => {
+  //       setPizzaList(response.data);
+  //   })
+  //   .catch(error => console.error('Error fetching pizzas:', error));
+  // }, []);
+
   useEffect(() => {
     // Filter out items with a price of 0 and call subCart for each
     cart.forEach(cartItem => {

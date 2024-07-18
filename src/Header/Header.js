@@ -1,9 +1,11 @@
 import './Header.css';
-
-import * as React from "react";
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import CartContext from '../Context/CartContext';
 
-function Header({ count }) {
+function Header() {
+  const { count } = useContext(CartContext);
+
   return (
     <div className="Header">
       
