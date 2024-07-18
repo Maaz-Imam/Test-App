@@ -1,18 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Main.css';
-import Size_Dropdown from './Size Dropdown/size_drop';
-import Qty_Dropdown from './Quantity Dropdown/qty_drop';
-import pizzaList from '../Pizza List/pizzaList.json';
+import SizeDropdown from './Size Dropdown/size_drop';
+import QtyDropdown from './Quantity Dropdown/qty_drop';
+// import pizzaList from '../Pizza List/pizzaList.json';
 import Modal from './Modal/Modal';
+import axios from 'axios';
 
 function Main({ addCart }) {
+
+    const [pizzaList, setPizzaList] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/pizzas`)
+        .then(response => {
+            setPizzaList(response.data);
+            setPizzaSelections(response.data.map(() => ({ size: 'small', quantity: 1 })));
+        })
+        .catch(error => console.error('Error fetching pizzas:', error));
+    }, []);
+
     // State to track which pizza's modal is open
     const [openPizzaId, setOpenPizzaId] = useState(null);
 
     // State to track sizes and quantities of each pizza
-    const [pizzaSelections, setPizzaSelections] = useState(
-        pizzaList.map(() => ({ size: 'small', quantity: 1 }))
-    );
+    const [pizzaSelections, setPizzaSelections] = useState([]);
 
     // Function to open the modal for a specific pizza
     const handleOpenModal = (id) => {
@@ -39,23 +50,23 @@ function Main({ addCart }) {
 
     return (
         <div className="Main">
-            {pizzaList.map((pizza, i) => (
-                <div className='Pizza-Card' key={i}>
+            {pizzaList.map((pizza) => (
+                <div className='Pizza-Card' key={pizza.id}>
                     <div className='Pizza-Card-Inner'>
-                        <div className='Pizza-Card-Inner-Upper' onClick={() => handleOpenModal(i)}>
-                            <h1>{pizza.title}</h1>
+                        <div className='Pizza-Card-Inner-Upper' onClick={() => handleOpenModal(pizza.id)}>
+                            <h1>{pizza.title} {pizza.id}</h1>
                             <img src={pizza.img} alt={`${pizza.title}`} />
                         </div>
                         <div className='Options'>
-                            <Size_Dropdown handlePizzaSize={(size) => handlePizzaSize(size.value, i)} />
-                            <Qty_Dropdown handlePizzaQty={(qty) => handlePizzaQty(qty.value, i)} />
+                            <SizeDropdown handlePizzaSize={(size) => handlePizzaSize(size.value, pizza.id)} />
+                            <QtyDropdown handlePizzaQty={(qty) => handlePizzaQty(qty.value, pizza.id)} />
                         </div>
                         <div className='Carting'>
                             <div>
-                                <p>PRICE : {pizza.prices[pizzaSelections[i].size] * pizzaSelections[i].quantity} Rs/-</p>
+                                <p>PRICE : {pizza.prices[pizzaSelections[pizza.id].size] * pizzaSelections[pizza.id].quantity} Rs/-</p>
                             </div>
                             <div>
-                                <button type='button' onClick={() => addCart(i, pizza.title, pizza.img, pizzaSelections[i].size, pizzaSelections[i].quantity,pizza.prices[pizzaSelections[i].size] * pizzaSelections[i].quantity)}>ADD TO CART</button>
+                                <button type='button' onClick={() => addCart(pizza.id, pizza.title, pizza.img, pizzaSelections[pizza.id].size, pizzaSelections[pizza.id].quantity,pizza.prices[pizzaSelections[pizza.id].size] * pizzaSelections[pizza.id].quantity)}>ADD TO CART</button>
                             </div>
                         </div>
                     </div>
@@ -63,7 +74,7 @@ function Main({ addCart }) {
             ))}
             {openPizzaId !== null && (
                 <Modal
-                    setIsOpen={handleCloseModal}
+                    handleCloseModal={handleCloseModal}
                     pizza={pizzaList[openPizzaId]}
                 />
             )}

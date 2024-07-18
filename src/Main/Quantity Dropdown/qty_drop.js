@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 
-function Qty_Dropdown({ handlePizzaQty }) {
+function QtyDropdown({ handlePizzaQty }) {
 
   const options = [
     { value: '1', label: '1' },
@@ -29,4 +28,4 @@ function Qty_Dropdown({ handlePizzaQty }) {
   );
 }
 
-export default Qty_Dropdown;
+export default QtyDropdown;

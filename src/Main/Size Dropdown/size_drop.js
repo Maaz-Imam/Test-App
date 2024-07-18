@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import './size_drop.css';
 
-function Size_Dropdown({ handlePizzaSize }) {
+function SizeDropdown({ handlePizzaSize }) {
 
   const options = [
     { value: 'small', label: 'Small' },
@@ -23,4 +22,4 @@ function Size_Dropdown({ handlePizzaSize }) {
   );
 };
 
-export default Size_Dropdown;
+export default SizeDropdown;
