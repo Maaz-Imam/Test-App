@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import CartContext from '../Context/CartContext';
+import CartContext from '../Cart/CartContext';
 import './Main.css';
 import SizeDropdown from './Size Dropdown/size_drop';
 import QtyDropdown from './Quantity Dropdown/qty_drop';

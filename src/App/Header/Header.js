@@ -1,7 +1,7 @@
 import './Header.css';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import CartContext from '../Context/CartContext';
+import CartContext from '../AppRoutes/Cart/CartContext';
 
 function Header() {
   const { count } = useContext(CartContext);
