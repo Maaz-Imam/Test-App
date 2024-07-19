@@ -9,8 +9,10 @@ Or
 `yarn install`
 
 ## ReactApp
-### Step 1: `cd Test-App\src\App`
-### Step 2: `npm start`
+### Step 1: 
+`cd Test-App\src\App`
+### Step 2:
+`npm start`
 
 ## JSON Server
 Open a different terminal and do the following: 
