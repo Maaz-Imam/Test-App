@@ -10,7 +10,7 @@ Or
 
 ## ReactApp
 ### Step 1: 
-`cd Test-App\src\App`
+`cd Test-App`
 ### Step 2:
 `npm start`
 
@@ -19,4 +19,4 @@ Open a different terminal and do the following:
 ### Step 1: 
 `cd Test-App` 
 ### Step 2: 
-`npx json-server src/App/Data/JsonData/data.json`
+`npx json-server src/App/Data/data.json`
