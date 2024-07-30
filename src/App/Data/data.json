@@ -1,79 +1,70 @@
-[
-  {
-      "id": 0,
+{
+  "pizzas": [
+    {
+      "id": "0",
       "title": "Non Veg Supreme",
       "img": "https://www.dominos.co.in/files/items/Non-Veg_Supreme.jpg",
       "prices": {
-          "small": 100,
-          "medium": 150,
-          "large": 200
-        },
+        "small": 100,
+        "medium": 150,
+        "large": 200
+      },
       "description": "A delightful combination of black olives, onions, grilled mushrooms, pepper BBQ chicken, peri-peri chicken, and grilled chicken rashers, making it a supreme treat for non-vegetarian lovers."
-  },
-  {
-      "id": 1,
+    },
+    {
+      "id": "1",
       "title": "Golden Corn Pizza",
       "img": "https://www.dominos.co.in//files/items/golden_corn_veg.jpg",
       "prices": {
-          "small": 120,
-          "medium": 4350,
-          "large": "NaN"
-        },
+        "small": 120,
+        "medium": 4350,
+        "large": "NaN"
+      },
       "description": "Enjoy the sweet and savory taste of golden corn with a blend of cheese and other toppings, perfect for those who enjoy a vegetarian delight."
-  },
-  {
-      "id": 2,
+    },
+    {
+      "id": "2",
       "title": "Jalapeno & Red Paprika Pizza",
       "img": "https://www.dominos.co.in/files/items/5_Pepper.jpg",
       "prices": {
-          "small": 200,
-          "medium": 250,
-          "large": 2000
-        },
+        "small": 200,
+        "medium": 250,
+        "large": 2000
+      },
       "description": "Spice up your taste buds with jalapenos and red paprika on a cheesy base, offering a fiery yet flavorful experience."
-  },
-  {
-      "id": 3,
+    },
+    {
+      "id": "3",
       "title": "Pepper Barbeque Chicken",
       "img": "https://www.dominos.co.in/files/items/Pepper_Barbeque.jpg",
       "prices": {
-          "small": 400,
-          "medium": 150,
-          "large": 800
-        },
+        "small": 400,
+        "medium": 150,
+        "large": 800
+      },
       "description": "Indulge in succulent BBQ chicken topped with a peppery sauce, creating a rich and tangy flavor profile."
-  },
-  {
-      "id": 4,
+    },
+    {
+      "id": "4",
       "title": "Mexican Green Wave",
       "img": "https://img2.exportersindia.com/product_images/bc-full/2018/10/2044906/mexican-green-wave-pizza-1540891420-4420335.jpeg",
       "prices": {
-          "small": 210,
-          "medium": 170,
-          "large": 200
-        },
+        "small": 210,
+        "medium": 170,
+        "large": 200
+      },
       "description": "Experience a wave of Mexican flavors with a blend of veggies, cheese, and spices that bring a taste of Mexico to every bite."
-  },
-  {
-      "id": 5,
-      "title": "Double Cheese Margherita Pizza",
-      "img": "https://www.dominos.co.in/files/items/Double_Cheese_Margherita.jpg",
-      "prices": {
-          "small": 100,
-          "medium": 150,
-          "large": 200
-        },
-      "description": "A classic favorite featuring double the cheese on a tomato sauce base, offering a simple yet satisfying pizza experience."
-  },
-  {
-      "id": 6,
+    },
+    {
+      "id": "6",
       "title": "Pepper Barbeque Chicken",
       "img": "https://www.dominos.co.in/files/items/Pepper_Barbeque.jpg",
       "prices": {
-          "small": 100,
-          "medium": 150,
-          "large": 200
-        },
+        "small": 100,
+        "medium": 150,
+        "large": 200
+      },
       "description": "Indulge in succulent BBQ chicken topped with a peppery sauce, creating a rich and tangy flavor profile."
-  }
-]
+    }
+  ]
+}

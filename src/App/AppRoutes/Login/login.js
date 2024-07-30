@@ -1,64 +1,72 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useDispatch } from 'react-redux';
+import { login } from '../../ReduxMaterial/StateSlicers/authSlice';
 import './Login.css';
 
 function Login() {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-    });
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Add your login logic here, such as sending a request to your server
-        console.log('Form data submitted:', formData);
-        // You can use Axios or the Fetch API to send the data to your server for authentication
-    };
+    const dispatch = useDispatch();
 
     return (
         <div className='Login'>
             <div className='Login-Box'>
                 <h2>Login</h2>
                 <div className='Login-Info'>
-                    <form onSubmit={handleSubmit}>
-                        <div>
-                            <input
-                                type="email"
-                                name="email"
-                                id="email"
-                                placeholder='Enter Email'
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                required
+                    <Formik
+                    initialValues={{email: "", password: "" }}
+
+                    onSubmit={(formData) => {
+                        console.log(formData);
+                        if (formData.email === 'admin@folio3.com' && formData.password === 'adminpass'){
+                            console.log('success');
+                            dispatch(login());
+                            document.getElementById('adminlink').click();
+                        }
+                    }}
+
+                    validate={(values) => {
+                        const errors = {};
+                        if (!values.email) {
+                          errors.email = "Required";
+                        } else if (
+                          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                        ) {
+                          errors.email = "Invalid email address";
+                        }
+                        if (!values.password) {
+                          errors.password = "Required";
+                        }
+                        return errors;
+                    }}
+
+                    >
+                        {({ isSubmitting }) => (
+                        <Form>
+                            <Field
+                            type="email"
+                            name="email"
+                            placeholder="Enter email address"
                             />
-                        </div>
-                        <div>
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                placeholder='Enter Password'
-                                value={formData.password}
-                                onChange={handleInputChange}
-                                required
+                            <ErrorMessage name="email" component="div" />
+
+                            <Field 
+                                type="password" 
+                                name="password" 
+                                placeholder="Enter your password"    
                             />
-                        </div>
-                        <div>
-                            <button type="submit">Login</button>
-                        </div>
-                    </form>
+                            <ErrorMessage name="password" component="div" />
+
+                            <button type="submit">
+                                Login
+                            </button>
+                        </Form>
+                        )}
+                    </Formik>
                     <Link to='/signup'>Click Here To Register</Link>
+                    <Link to='/admin' id='adminlink'></Link>
                 </div>
             </div>
-        </div>
+        </div> 
     )
 }
 

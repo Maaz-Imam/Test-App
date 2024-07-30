@@ -1,31 +1,28 @@
-import React, { useState, useEffect, useContext } from 'react';
-import CartContext from '../Cart/CartContext';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addCart, updateCart } from '../../ReduxMaterial/StateSlicers/cartSlice';
+import { addBill } from '../../ReduxMaterial/StateSlicers/billSlice';
+import { increment } from '../../ReduxMaterial/StateSlicers/counterSlice';
+import { setPizzaSelections } from '../../ReduxMaterial/StateSlicers/pizzaListSlice';
 import './Main.css';
 import SizeDropdown from './Size Dropdown/size_drop';
 import QtyDropdown from './Quantity Dropdown/qty_drop';
-// import pizzaList from '../Pizza List/pizzaList.json';
 import Modal from './Modal/Modal';
-import axios from 'axios';
+import pizzaFetcher from '../../API/pizzaFetcher';
 
 function Main() {
-    const { addCart } = useContext(CartContext);
+    const cart = useSelector((state) => state.cart.value)
+    const pizzaList = useSelector((state) => state.pizzaList.list)
+    const pizzaSelections = useSelector((state) => state.pizzaList.selections)
+    const dispatch = useDispatch()
 
-    const [pizzaList, setPizzaList] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/pizzas`)
-        .then(response => {
-            setPizzaList(response.data);
-            setPizzaSelections(response.data.map(() => ({ size: 'small', quantity: 1 })));
-        })
-        .catch(error => console.error('Error fetching pizzas:', error));
-    }, []);
+        dispatch(pizzaFetcher());
+    }, [dispatch]);
 
-    // State to track which pizza's modal is open
+
     const [openPizzaId, setOpenPizzaId] = useState(null);
-
-    // State to track sizes and quantities of each pizza
-    const [pizzaSelections, setPizzaSelections] = useState([]);
 
     // Function to open the modal for a specific pizza
     const handleOpenModal = (id) => {
@@ -40,22 +37,41 @@ function Main() {
 
     const handlePizzaSize = (size, index) => {
         const newSelections = [...pizzaSelections];
-        newSelections[index].size = size;
-        setPizzaSelections(newSelections);
+        newSelections[index] = { ...newSelections[index], size };
+        dispatch(setPizzaSelections(newSelections));
     };
-
+    
     const handlePizzaQty = (qty, index) => {
         const newSelections = [...pizzaSelections];
-        newSelections[index].quantity = qty;
-        setPizzaSelections(newSelections);
+        newSelections[index] = { ...newSelections[index], quantity: qty };
+        dispatch(setPizzaSelections(newSelections));
+    };
+    
+    const handleCart = (id, title, img, size, qty, price) => {
+        if (isNaN(price)) {
+            alert('Not available');
+            return;
+        }
+
+        dispatch(addBill(price));
+
+        const existingItem = cart.find((cartItem) => cartItem.id === id && cartItem.size === size);
+        if (existingItem){
+            dispatch(updateCart({id: id, size: size, qty: qty, price: price}));
+        }
+        else {
+            dispatch(increment());
+            const newCartItem = {'id': id, 'title': title, 'img': img, 'size': size, 'qty': qty, 'price': price}
+            dispatch(addCart(newCartItem));
+        }
     };
 
     return (
         <div className="Main">
-            {pizzaList.map((pizza) => (
+            {pizzaList.map((pizza, index) => (
                 <div className='Pizza-Card' key={pizza.id}>
                     <div className='Pizza-Card-Inner'>
-                        <div className='Pizza-Card-Inner-Upper' onClick={() => handleOpenModal(pizza.id)}>
+                        <div className='Pizza-Card-Inner-Upper' onClick={() => handleOpenModal(index)}>
                             <h1>{pizza.title}</h1>
                             <img src={pizza.img} alt={`${pizza.title}`} />
                         </div>
@@ -65,10 +81,10 @@ function Main() {
                         </div>
                         <div className='Carting'>
                             <div>
-                                <p>PRICE : {pizza.prices[pizzaSelections[pizza.id].size] * pizzaSelections[pizza.id].quantity} Rs/-</p>
+                                <p>PRICE : {pizza.prices[pizzaSelections[index].size] * pizzaSelections[index].quantity} Rs/-</p>
                             </div>
                             <div>
-                                <button type='button' onClick={() => addCart(pizza.id, pizza.title, pizza.img, pizzaSelections[pizza.id].size, pizzaSelections[pizza.id].quantity,pizza.prices[pizzaSelections[pizza.id].size] * pizzaSelections[pizza.id].quantity)}>ADD TO CART</button>
+                                <button type='button' onClick={() => handleCart(index, pizza.title, pizza.img, pizzaSelections[index].size, pizzaSelections[index].quantity,pizza.prices[pizzaSelections[index].size] * pizzaSelections[index].quantity)}>ADD TO CART</button>
                             </div>
                         </div>
                     </div>

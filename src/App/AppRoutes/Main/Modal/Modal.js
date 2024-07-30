@@ -1,7 +1,7 @@
 import './Modal.css';
 
 function Modal({ handleCloseModal, pizza }) {
-    // console.log(pizza);
+    console.log(pizza);
     return (
         <>
             <div className='Modal-overlay' onClick={() => handleCloseModal(false)}></div>
