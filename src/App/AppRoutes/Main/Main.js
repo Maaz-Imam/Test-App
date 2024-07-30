@@ -76,8 +76,8 @@ function Main() {
                             <img src={pizza.img} alt={`${pizza.title}`} />
                         </div>
                         <div className='Options'>
-                            <SizeDropdown handlePizzaSize={(size) => handlePizzaSize(size.value, pizza.id)} />
-                            <QtyDropdown handlePizzaQty={(qty) => handlePizzaQty(qty.value, pizza.id)} />
+                            <SizeDropdown handlePizzaSize={(size) => handlePizzaSize(size.value, index)} />
+                            <QtyDropdown handlePizzaQty={(qty) => handlePizzaQty(qty.value, index)} />
                         </div>
                         <div className='Carting'>
                             <div>
