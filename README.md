@@ -10,7 +10,7 @@ Or
 
 ## ReactApp
 ### Step 1: 
-`cd Test-App\src\App`
+`cd Test-App`
 ### Step 2:
 `npm start`
 
